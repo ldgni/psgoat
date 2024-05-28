@@ -20,13 +20,13 @@ export default async function Fixtures() {
 
   const content =
     matches.length === 0 ? (
-      <main className="flex flex-col gap-4 text-center sm:text-lg md:text-xl lg:text-2xl">
+      <div className="flex flex-col gap-4 text-center sm:text-lg md:text-xl lg:text-2xl">
         <p>The season has ended.</p>
         <p>
           This page will automatically update once the new calendar is
           available.
         </p>
-      </main>
+      </div>
     ) : (
       <Suspense fallback={<LoadingSpinner />}>
         <MatchList matches={matches} showScores={false} />
