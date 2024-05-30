@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { revalidatePath } from "next/cache";
 import { Suspense } from "react";
 
 import MatchList from "@/components/matchList";
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
 
 async function getFixtures() {
   const data = await getFromAPI("teams/524/matches?status=SCHEDULED");
+  revalidatePath("/fixtures");
   return data.matches;
 }
 

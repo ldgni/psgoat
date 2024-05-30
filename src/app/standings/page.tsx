@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { revalidatePath } from "next/cache";
 import { Suspense } from "react";
 
 import StandingsList from "@/components/standingsList";
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
 
 async function getStandings() {
   const data = await getFromAPI("competitions/FL1/standings");
+  revalidatePath("/standings");
   return data.standings;
 }
 
