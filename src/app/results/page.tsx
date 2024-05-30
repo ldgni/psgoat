@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { revalidatePath } from "next/cache";
 import { Suspense } from "react";
 
 import MatchList from "@/components/matchList";
@@ -16,7 +15,6 @@ async function getResults() {
   const sortedMatches = data.matches.sort((a: any, b: any) => {
     return new Date(b.utcDate).getTime() - new Date(a.utcDate).getTime();
   });
-  revalidatePath("/results");
   return sortedMatches;
 }
 
